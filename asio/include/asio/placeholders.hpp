@@ -140,7 +140,6 @@ namespace
 } // namespace
 
 #  endif
-
 # endif
 
 #elif 1
