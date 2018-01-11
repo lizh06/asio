@@ -418,6 +418,8 @@ private:
 
 #endif // !defined(ASIO_NO_DEPRECATED)
 
+#if defined(ASIO_ENABLE_ARRAY_BUFFER_WORKAROUND)
+
 template <typename Buffer, typename Elem>
 class buffer_sequence_adapter<Buffer, boost::array<Elem, 2> >
   : buffer_sequence_adapter_base
@@ -472,6 +474,8 @@ private:
   native_buffer_type buffers_[2];
   std::size_t total_buffer_size_;
 };
+
+#endif // defined(ASIO_ENABLE_ARRAY_BUFFER_WORKAROUND)
 
 #if defined(ASIO_HAS_STD_ARRAY)
 

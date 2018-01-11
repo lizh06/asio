@@ -298,6 +298,7 @@ private:
     return false;
   }
 
+#if defined(ASIO_HAS_BOOST_DATE_TIME)
   // Determine if the specified absolute time is positive infinity.
   template <typename T, typename TimeSystem>
   static bool is_positive_infinity(
@@ -305,6 +306,7 @@ private:
   {
     return time.is_pos_infinity();
   }
+#endif // defined(ASIO_HAS_BOOST_DATE_TIME)
 
   // Helper function to convert a duration into milliseconds.
   template <typename Duration>

@@ -17,6 +17,7 @@
 
 #include "asio/detail/config.hpp"
 
+#if defined(ASIO_HAS_BOOST_DATE_TIME)
 namespace boost {
 namespace date_time {
 
@@ -30,5 +31,6 @@ class ptime;
 
 } // namespace posix_time
 } // namespace boost
+#endif
 
 #endif // ASIO_DETAIL_DATE_TIME_FWD_HPP

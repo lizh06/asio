@@ -33,11 +33,15 @@ struct prepared_buffers_max
   enum { value = buffer_sequence_adapter_base::max_buffers };
 };
 
+#if defined(ASIO_ENABLE_ARRAY_BUFFER_WORKAROUND)
+
 template <typename Elem, std::size_t N>
 struct prepared_buffers_max<boost::array<Elem, N> >
 {
   enum { value = N };
 };
+
+#endif // defined(ASIO_ENABLE_ARRAY_BUFFER_WORKAROUND)
 
 #if defined(ASIO_HAS_STD_ARRAY)
 
@@ -269,6 +273,8 @@ public:
 
 #endif // !defined(ASIO_NO_DEPRECATED)
 
+#if defined(ASIO_ENABLE_ARRAY_BUFFER_WORKAROUND)
+
 template <typename Buffer, typename Elem>
 class consuming_buffers<Buffer, boost::array<Elem, 2>,
     typename boost::array<Elem, 2>::const_iterator>
@@ -318,6 +324,8 @@ private:
   boost::array<Elem, 2> buffers_;
   std::size_t total_consumed_;
 };
+
+#endif // defined(ASIO_ENABLE_ARRAY_BUFFER_WORKAROUND)
 
 #if defined(ASIO_HAS_STD_ARRAY)
 

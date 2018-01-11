@@ -1093,7 +1093,7 @@ buffer(boost::array<PodType, N>& data,
         ? data.size() * sizeof(PodType) : max_size_in_bytes));
 }
 
-#else // defined(ASIO_ENABLE_ARRAY_BUFFER_WORKAROUND)
+// #else // defined(ASIO_ENABLE_ARRAY_BUFFER_WORKAROUND)
 
 /// Create a new modifiable buffer that represents the given POD array.
 /**
@@ -1156,8 +1156,6 @@ inline ASIO_CONST_BUFFER buffer(boost::array<const PodType, N>& data,
       ? data.size() * sizeof(PodType) : max_size_in_bytes);
 }
 
-#endif // defined(ASIO_ENABLE_ARRAY_BUFFER_WORKAROUND)
-
 /// Create a new non-modifiable buffer that represents the given POD array.
 /**
  * @returns A const_buffer value equivalent to:
@@ -1187,6 +1185,8 @@ inline ASIO_CONST_BUFFER buffer(const boost::array<PodType, N>& data,
       data.size() * sizeof(PodType) < max_size_in_bytes
       ? data.size() * sizeof(PodType) : max_size_in_bytes);
 }
+
+#endif // defined(ASIO_ENABLE_ARRAY_BUFFER_WORKAROUND)
 
 #if defined(ASIO_HAS_STD_ARRAY) || defined(GENERATING_DOCUMENTATION)
 
